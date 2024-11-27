@@ -66,21 +66,6 @@ namespace KlinikaAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Doctors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Ulica 1",
-                            DateOfBirth = new DateTime(2002, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorCode = "SB1",
-                            Gender = "Žensko",
-                            JMBG = "1808002155002",
-                            Name = "Selma",
-                            PhoneNumber = "062000111",
-                            Surname = "Bajramović",
-                            Title = "Specijalizant"
-                        });
                 });
 
             modelBuilder.Entity("KlinikaAPI.Models.Domain.Patient", b =>
@@ -119,30 +104,6 @@ namespace KlinikaAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Patients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 2,
-                            Address = "Ulica 2",
-                            DateOfBirth = new DateTime(2000, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Gender = "Muško",
-                            JMBG = "1112223334445",
-                            Name = "Lana",
-                            PhoneNumber = "062111888",
-                            Surname = "Memić"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "Ulica 3",
-                            DateOfBirth = new DateTime(2003, 9, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Gender = "Žensko",
-                            JMBG = "1234567890123",
-                            Name = "Elma",
-                            PhoneNumber = "063111999",
-                            Surname = "Mustafić"
-                        });
                 });
 #pragma warning restore 612, 618
         }
