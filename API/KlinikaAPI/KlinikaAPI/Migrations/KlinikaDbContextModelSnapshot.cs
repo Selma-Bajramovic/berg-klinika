@@ -97,6 +97,31 @@ namespace KlinikaAPI.Migrations
                     b.ToTable("Doctors");
                 });
 
+            modelBuilder.Entity("KlinikaAPI.Models.Domain.Finding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AdmissionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdmissionId");
+
+                    b.ToTable("Findings");
+                });
+
             modelBuilder.Entity("KlinikaAPI.Models.Domain.Patient", b =>
                 {
                     b.Property<int>("Id")
@@ -152,6 +177,17 @@ namespace KlinikaAPI.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("KlinikaAPI.Models.Domain.Finding", b =>
+                {
+                    b.HasOne("KlinikaAPI.Models.Domain.Admission", "Admission")
+                        .WithMany()
+                        .HasForeignKey("AdmissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Admission");
                 });
 #pragma warning restore 612, 618
         }

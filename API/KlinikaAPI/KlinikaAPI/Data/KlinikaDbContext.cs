@@ -10,6 +10,43 @@ namespace KlinikaAPI.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Admission> Admissions { get; set; }
+        public DbSet<Finding> Findings { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -59,9 +96,5 @@ namespace KlinikaAPI.Data
         //    base.OnModelCreating(modelBuilder);
         //}
 
-        //private static string GenerateDoctorCode(string name, string surname, int id)
-        //{
-        //    return $"{name[0]}{surname[0]}{id}".ToUpper();
-        //}
     }
 }
