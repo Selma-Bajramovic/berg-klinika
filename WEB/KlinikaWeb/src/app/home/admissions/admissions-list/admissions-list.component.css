@@ -1,0 +1,62 @@
+.container {
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+  color: #333;
+}
+
+.header {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.filters div {
+  display: flex;
+  flex-direction: column;
+}
+
+.admissions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admission-card {
+  background-color: #e3f2fd;
+  border: 1px solid #d1e7ff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.actions {
+  text-align: right;
+}
+
+.btn-wrapper {
+  text-align: right;
+  margin-top: 20px;
+}
+
+button {
+  border-radius: 5px;
+}
+
+.mat-slide-toggle {
+  color: #007bff;
+}
