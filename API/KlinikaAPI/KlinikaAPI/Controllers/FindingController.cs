@@ -26,7 +26,9 @@ namespace KlinikaAPI.Controllers
                 Id = f.Id,
                 AdmissionId = f.AdmissionId,
                 Description = f.Description,
-                CreatedAt = f.CreatedAt
+                CreatedAt = f.CreatedAt,
+                DoctorDetails = $"{f.Admission.Doctor.Surname} {f.Admission.Doctor.Name} - {f.Admission.Doctor.DoctorCode}",
+                PatientName = $"{f.Admission.Patient.Name} {f.Admission.Patient.Surname}"
             });
 
             return Ok(findingDtos);
@@ -44,7 +46,9 @@ namespace KlinikaAPI.Controllers
                 Id = finding.Id,
                 AdmissionId = finding.AdmissionId,
                 Description = finding.Description,
-                CreatedAt = finding.CreatedAt
+                CreatedAt = finding.CreatedAt,
+                DoctorDetails = $"{finding.Admission.Doctor.Surname} {finding.Admission.Doctor.Name} - {finding.Admission.Doctor.DoctorCode}",
+                PatientName = $"{finding.Admission.Patient.Name} {finding.Admission.Patient.Surname}"
             };
 
             return Ok(findingDto);

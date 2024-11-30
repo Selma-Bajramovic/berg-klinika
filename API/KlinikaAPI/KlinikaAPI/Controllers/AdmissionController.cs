@@ -106,6 +106,6 @@ namespace KlinikaAPI.Controllers
             await _admissionRepository.DeleteAdmissionAsync(id);
 
             return Ok(new { message = "Admission deleted successfully." });
-        }
+        }      
     }
 }

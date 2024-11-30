@@ -26,6 +26,11 @@ namespace KlinikaAPI.Controllers
                 Id = d.Id,
                 Name = d.Name,
                 Surname = d.Surname,
+                JMBG=d.JMBG,
+                DateOfBirth = d.DateOfBirth,
+                Gender= d.Gender,
+                Address=d.Address,
+                PhoneNumber=d.PhoneNumber,
                 Title = d.Title,
                 DoctorCode = d.DoctorCode
             });
@@ -46,6 +51,11 @@ namespace KlinikaAPI.Controllers
                 Id = doctor.Id,
                 Name = doctor.Name,
                 Surname = doctor.Surname,
+                JMBG = doctor.JMBG,
+                DateOfBirth = doctor.DateOfBirth,
+                Gender = doctor.Gender,
+                Address = doctor.Address,
+                PhoneNumber = doctor.PhoneNumber,
                 Title = doctor.Title,
                 DoctorCode = doctor.DoctorCode
             };
@@ -151,7 +161,7 @@ namespace KlinikaAPI.Controllers
 
             await _doctorRepository.DeleteDoctorAsync(id);
 
-            return Ok($"Doctor with ID {id} has been deleted.");
+            return Ok(new { message = $"Doctor with ID {id} has been deleted." });
         }
         private string GenerateDoctorCode(string name, string surname)
         {

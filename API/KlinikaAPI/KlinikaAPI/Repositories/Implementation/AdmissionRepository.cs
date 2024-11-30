@@ -59,6 +59,5 @@ namespace KlinikaAPI.Repositories.Implementation
                 await _context.SaveChangesAsync();
             }
         }
-
     }
 }

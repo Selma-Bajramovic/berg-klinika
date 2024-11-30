@@ -16,15 +16,22 @@ namespace KlinikaAPI.Repositories.Implementation
 
         public async Task<IEnumerable<Finding>> GetAllFindingsAsync()
         {
-            return await _context.Findings.Include(f => f.Admission).ToListAsync();
+            return await _context.Findings
+                .Include(f => f.Admission)
+                .ThenInclude(a => a.Patient)
+                .Include(f => f.Admission.Doctor)
+                .ToListAsync();
         }
 
         public async Task<Finding?> GetFindingByIdAsync(int id)
         {
             return await _context.Findings
                 .Include(f => f.Admission)
+                .ThenInclude(a => a.Patient)
+                .Include(f => f.Admission.Doctor)
                 .FirstOrDefaultAsync(f => f.Id == id);
         }
+
 
         public async Task AddFindingAsync(Finding finding)
         {
