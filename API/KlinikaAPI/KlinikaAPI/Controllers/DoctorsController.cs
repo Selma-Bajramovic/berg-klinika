@@ -32,6 +32,7 @@ namespace KlinikaAPI.Controllers
                 Address=d.Address,
                 PhoneNumber=d.PhoneNumber,
                 Title = d.Title,
+                IsSpec=d.IsSpec,
                 DoctorCode = d.DoctorCode
             });
             return Ok(doctorDtos);
@@ -57,6 +58,7 @@ namespace KlinikaAPI.Controllers
                 Address = doctor.Address,
                 PhoneNumber = doctor.PhoneNumber,
                 Title = doctor.Title,
+                IsSpec=doctor.IsSpec,
                 DoctorCode = doctor.DoctorCode
             };
 
@@ -79,7 +81,8 @@ namespace KlinikaAPI.Controllers
                 Gender = request.Gender,
                 Address = request.Address,
                 PhoneNumber = request.PhoneNumber,
-                Title = request.Title
+                Title = request.Title,
+                IsSpec=request.IsSpec,
             };
 
             doctor.DoctorCode = GenerateDoctorCode(request.Name, request.Surname);
@@ -99,6 +102,7 @@ namespace KlinikaAPI.Controllers
                 Address = doctor.Address,
                 PhoneNumber = doctor.PhoneNumber,
                 Title = doctor.Title,
+                IsSpec=doctor.IsSpec,
                 DoctorCode = doctor.DoctorCode + $"{doctor.Id}"
             };
 
@@ -127,6 +131,7 @@ namespace KlinikaAPI.Controllers
             existingDoctor.Address = request.Address;
             existingDoctor.PhoneNumber = request.PhoneNumber;
             existingDoctor.Title = request.Title;
+            existingDoctor.IsSpec = request.IsSpec;
 
             existingDoctor.DoctorCode = GenerateDoctorCode(existingDoctor.Name, existingDoctor.Surname) + $"{existingDoctor.Id}";
 
@@ -143,6 +148,7 @@ namespace KlinikaAPI.Controllers
                 Address = existingDoctor.Address,
                 PhoneNumber = existingDoctor.PhoneNumber,
                 Title = existingDoctor.Title,
+                IsSpec = existingDoctor.IsSpec,
                 DoctorCode = existingDoctor.DoctorCode
             };
 
