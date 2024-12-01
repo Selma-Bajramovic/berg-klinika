@@ -1,0 +1,136 @@
+<div class="add-doctor-container">
+    <h2>Dodaj novog doktora</h2>
+    <form (ngSubmit)="onSubmit()" #doctorForm="ngForm">
+      <div class="form-group">
+        <label for="name">Ime doktora</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          [(ngModel)]="model.name"
+          name="name"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="surname">Prezime doktora</label>
+        <input
+          type="text"
+          id="surname"
+          class="form-control"
+          [(ngModel)]="model.surname"
+          name="surname"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="jmbg">JMBG</label>
+        <input
+          type="text"
+          id="jmbg"
+          class="form-control"
+          [(ngModel)]="model.jmbg"
+          name="jmbg"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="dateOfBirth">Datum rođenja</label>
+        <input
+          type="date"
+          id="dateOfBirth"
+          class="form-control"
+          [(ngModel)]="model.dateOfBirth"
+          name="dateOfBirth"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Spol</label>
+        <select
+          id="gender"
+          class="form-control"
+          [(ngModel)]="model.gender"
+          name="gender"
+          required
+        >
+          <option value="" disabled selected>Izaberite spol</option>
+          <option value="Muški">Muški</option>
+          <option value="Ženski">Ženski</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Adresa</label>
+        <input
+          type="text"
+          id="address"
+          class="form-control"
+          [(ngModel)]="model.address"
+          name="address"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="phoneNumber">Broj telefona</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          class="form-control"
+          [(ngModel)]="model.phoneNumber"
+          name="phoneNumber"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="title">Specijalizacija</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          [(ngModel)]="model.title"
+          name="title"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="isSpec">Da li je specijalist?</label>
+        <select
+          id="isSpec"
+          class="form-control"
+          [(ngModel)]="model.isSpec"
+          name="isSpec"
+        >
+          <option [ngValue]="true">Da</option>
+          <option [ngValue]="false">Ne</option>
+        </select>
+      </div>
+      
+  
+  
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!doctorForm.form.valid"
+        >
+          Spremi
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="navigateToHome()"
+        >
+          Odustani
+        </button>
+      </div>
+    </form>
+  </div>
+  
