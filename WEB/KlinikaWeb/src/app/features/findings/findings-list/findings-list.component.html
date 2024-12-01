@@ -1,1 +1,23 @@
-<p>findings-list works!</p>
+<div class="container">
+    <div class="header-container">
+      <strong>Nalazi</strong>
+    </div>
+
+    <div class="findings-grid">
+        <div class="finding-card" *ngFor="let finding of findings">
+            <div class="card-header">
+                Nalaz {{ finding.id }}
+            </div>
+            <div class="card-body">
+                <p><strong>Napisao:</strong> dr. {{ finding.doctorDetails }}</p>
+                <p><strong>Pacijent:</strong> {{ finding.patientName }}</p>
+                <p><strong>Nalaz napisan:</strong> {{ finding.createdAt | date: 'dd.MM.yyyy.'}}</p>
+                <p><strong>Sadržaj nalaza:</strong> {{ finding.description }}</p>
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-danger" (click)="confirmDelete(finding.id)">Obriši nalaz</button>
+                <button class="btn btn-secondary" (click)="editFinding(finding.id)">Izmijeni nalaz</button>
+            </div>
+        </div>
+    </div>
+</div>

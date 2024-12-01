@@ -1,0 +1,107 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-container h2 {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+.header-container .btn {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #d1e7ff;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header-container .btn:hover {
+  background-color: #0056b3;
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.finding-card {
+  background-color: #e3f2fd;
+  border: 1px solid #d1e7ff;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.finding-card .card-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.finding-card .card-body p {
+  margin: 5px 0;
+}
+
+.finding-card .card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.finding-card .btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.finding-card .btn.btn-secondary {
+  color: #007bff;
+  background-color: white;
+  border: 1px solid #007bff;
+}
+
+.finding-card .btn.btn-secondary:hover {
+  color: white;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.finding-card .btn.btn-danger {
+  color: #dc3545;
+  background-color: white;
+  border: 1px solid #dc3545;
+}
+
+.finding-card .btn.btn-danger:hover {
+  color: white;
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  border-radius: 5px;
+}
