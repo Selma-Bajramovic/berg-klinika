@@ -1,0 +1,108 @@
+<div class="add-patient-container">
+    <h2>Uredi podatke pacijenta</h2>
+    <form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+        <div class="form-group">
+            <label for="name">Ime pacijenta</label>
+            <input
+                type="text"
+                id="name"
+                class="form-control"
+                [(ngModel)]="patient.name"
+                name="name"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Prezime pacijenta</label>
+            <input
+                type="text"
+                id="surname"
+                class="form-control"
+                [(ngModel)]="patient.surname"
+                name="surname"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="jmbg">JMBG</label>
+            <input
+                type="text"
+                id="jmbg"
+                class="form-control"
+                [(ngModel)]="patient.jmbg"
+                name="jmbg"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Datum rođenja</label>
+            <input
+                type="date"
+                id="dateOfBirth"
+                class="form-control"
+                [(ngModel)]="patient.dateOfBirth"
+                name="dateOfBirth"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Spol</label>
+            <select
+                id="gender"
+                class="form-control"
+                [(ngModel)]="patient.gender"
+                name="gender"
+                required
+            >
+                <option value="" disabled selected>Izaberite spol</option>
+                <option value="Muški">Muški</option>
+                <option value="Ženski">Ženski</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Adresa</label>
+            <input
+                type="text"
+                id="address"
+                class="form-control"
+                [(ngModel)]="patient.address"
+                name="address"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Broj telefona</label>
+            <input
+                type="text"
+                id="phoneNumber"
+                class="form-control"
+                [(ngModel)]="patient.phoneNumber"
+                name="phoneNumber"
+                required
+            />
+        </div>
+
+        <div class="form-actions">
+            <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!patientForm.form.valid"
+            >
+                Spremi promjene
+            </button>
+            <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="cancel()"
+            >
+                Odustani
+            </button>
+        </div>
+    </form>
+</div>
