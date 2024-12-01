@@ -1,1 +1,24 @@
-<p>patients-list works!</p>
+<div class="container">
+  <div class="header-container">
+    <strong>Pacijenti</strong>
+    <button class="btn" [routerLink]="'/novipacijent'">Dodaj novog registrovanog pacijenta</button>
+  </div>
+
+  <div class="patients">
+    <div *ngFor="let patient of patients" class="patient-card">
+      <div class="patient-header">
+        <h3>{{ patient.name }} {{ patient.surname }}</h3>
+      </div>
+      <p>JMBG: {{ patient.jmbg }}</p>
+      <p>Datum rođenja: {{ patient.dateOfBirth | date: 'dd.MM.yyyy.' }}</p>
+      <p>Spol: {{ patient.gender }}</p>
+      <p>Adresa: {{ patient.address }}</p>
+      <p>Telefon: {{ patient.phoneNumber }}</p>
+
+      <div class="actions">
+        <button class="btn btn-warning" (click)="editPatient(patient.id)">Izmijeni podatke</button>
+        <button class="btn btn-danger" (click)="confirmDelete(patient.id)">Obriši pacijenta</button>
+      </div>
+    </div>
+  </div>
+</div>
