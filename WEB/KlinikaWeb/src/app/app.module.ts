@@ -11,8 +11,24 @@ import { FindingsListComponent } from './features/findings/findings-list/finding
 import { AdmissionsListComponent } from './home/admissions/admissions-list/admissions-list.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DoctorsListComponent } from './features/doctors/doctors-list/doctors-list.component';
-import { PatientsListComponent } from './features/patients/patients-list/patients-list.component';
+import { PatientListComponent } from './features/patients/patients-list/patients-list.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AddAdmissionComponent } from './home/admissions/add-admission/add-admission.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { AddDoctorComponent } from './features/doctors/add-doctor/add-doctor.component';
+import { AddPatientComponent } from './features/patients/add-patient/add-patient.component';
+import { AddFindingComponent } from './features/findings/add-finding/add-finding.component';
+import { EditAdmissionComponent } from './home/admissions/edit-admission/edit-admission.component';
+import { EditFindingComponent } from './features/findings/edit-finding/edit-finding.component';
+import { SuccessDialogComponent } from './shared/succes-dialog/succes-dialog.component';
+import { EditPatientComponent } from './features/patients/edit-patient/edit-patient.component';
+import { EditDoctorComponent } from './features/doctors/edit-doctor/edit-doctor.component';
+
 
 
 @NgModule({
@@ -22,7 +38,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FindingsListComponent,
     AdmissionsListComponent,
     DoctorsListComponent,
-    PatientsListComponent
+    PatientListComponent,
+    AddAdmissionComponent,
+    ConfirmationDialogComponent,
+    AddDoctorComponent,
+    AddPatientComponent,
+    AddFindingComponent,
+    EditAdmissionComponent,
+    EditFindingComponent,
+    SuccessDialogComponent,
+    EditPatientComponent,
+    EditDoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +58,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule, 
     MatSlideToggleModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    RouterModule.forRoot([]),
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
