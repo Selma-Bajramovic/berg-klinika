@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="header">
-    <strong>Današnji datum:</strong> {{ today }}
+  <div class="header-wrapper">
+    <strong>Današnji datum: {{ today }}</strong>
+    <button class="btn btn-primary btn-sm" [routerLink]="'/noviprijem'">Dodaj novi prijem</button>
   </div>
 
   <div class="filters">
@@ -13,35 +14,35 @@
       <input type="date" />
     </div>
     <div>
-      <mat-slide-toggle>Hitni prijem</mat-slide-toggle>
+      <mat-slide-toggle (change)="toggleEmergencyAdmissions($event.checked)">Samo hitni prijemi</mat-slide-toggle>
     </div>
-    <div>
+   <!-- <div>
       <select id="doctor">
-        <option value="" disabled selected>-- Izaberite nadležnog doktora --</option>
+        <option value="" disabled selected>Nadležni doktor</option>
         <option *ngFor="let doctor of doctors" [value]="doctor.id">
           {{ doctor.surname }} {{ doctor.name }}
         </option>
-      </select>
-    </div>
+      </select>     
+    </div> -->
   </div>
 
   <div class="admissions">
-    <div *ngFor="let admission of admissions" class="admission-card">
-      <div class="admission-header">
-        <h5>Prijem broj: {{ admission.id }}</h5>
-        <span>Nadležni doktor: dr. {{ admission.doctorDetails }}</span>
-      </div>
-      <p>Pacijent: {{ admission.patientName }}</p>
-      <p>Datum i vrijeme prijema: {{ admission.admissionDateTime | date: 'dd.MM.yyyy HH:mm' }}</p>
-      <p>Hitni prijem: {{ admission.isEmergency ? 'Da' : 'Ne' }}</p>
-      <div class="actions">
-        <button class="btn btn-outline-primary">Detalji</button>
-      </div>
+    <div 
+    *ngFor="let admission of admissions" 
+    class="admission-card" 
+    [ngClass]="{'emergency': admission.isEmergency}">
+    <div class="admission-header">
+      <h5>Prijem broj: {{ admission.id }}</h5>
+      <span>Nadležni doktor: dr. {{ admission.doctorDetails }}</span>
     </div>
-  </div> 
+    <p>Pacijent: {{ admission.patientName }}</p>
+    <p>Datum i vrijeme prijema: {{ admission.admissionDateTime | date: 'dd.MM.yyyy. HH:mm' }}</p>
+    <p>Hitni prijem: {{ admission.isEmergency ? 'Da' : 'Ne' }}</p>
+    <div class="actions">
+      <button class="btn btn-outline-primary" (click)="writeAdmission(admission.id)">Napiši nalaz</button>
+      <button class="btn btn-outline-danger" (click)="confirmDelete(admission.id)">Otkaži prijem</button>
+    </div>
+  </div>
   
-
-  <div class="btn-wrapper">
-    <button class="btn btn-primary btn-sm">Dodaj novi prijem</button>
   </div>
 </div>

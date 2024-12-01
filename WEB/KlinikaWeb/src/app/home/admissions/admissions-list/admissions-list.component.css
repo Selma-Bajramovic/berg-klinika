@@ -4,7 +4,10 @@
   color: #333;
 }
 
-.header {
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
   font-size: 18px;
   font-weight: bold;
@@ -45,12 +48,9 @@
 }
 
 .actions {
-  text-align: right;
-}
-
-.btn-wrapper {
-  text-align: right;
-  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 button {
@@ -59,4 +59,10 @@ button {
 
 .mat-slide-toggle {
   color: #007bff;
+}
+
+.admission-card.emergency {
+  border-color: #dc3545;
+  border-width: 2px;
+  border-style:solid;
 }
