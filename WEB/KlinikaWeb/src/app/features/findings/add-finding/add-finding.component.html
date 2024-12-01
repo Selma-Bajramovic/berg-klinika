@@ -1,0 +1,24 @@
+<div class="finding-form">
+    <h2>Napiši nalaz za: <strong>prijem broj {{ admissionId }}</strong></h2>
+    <p>Pacijent: <strong>{{ patientName }}</strong></p>
+    <p>Nadležni doktor: <strong>{{ doctorName }}</strong></p>
+    
+    <form (ngSubmit)="addFinding()">
+      <div>
+        <label for="description">Opis nalaza:</label>
+        <textarea
+          id="description"
+          [(ngModel)]="finding.description"
+          name="description"
+          rows="5"
+          placeholder="Unesite tekst nalaza"
+          required
+        ></textarea>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Odustani</button>
+        <button type="submit" class="btn btn-primary">Dodaj nalaz</button>
+      </div>
+    </form>
+  </div>
+  
