@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Potvrda</h2>
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Ne</button>
+  <button mat-button color="primary" (click)="onConfirm()">Da</button>
+</mat-dialog-actions>
