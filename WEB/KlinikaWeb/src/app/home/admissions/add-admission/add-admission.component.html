@@ -1,0 +1,68 @@
+<div class="add-admission-container">
+  <h2>Dodaj novi prijem</h2>
+  <form (ngSubmit)="onSubmit()" #admissionForm="ngForm">
+    <div class="form-group">
+      <label for="admissionDateTime">Datum i vrijeme prijema</label>
+      <input
+        type="datetime-local"
+        id="admissionDateTime"
+        class="form-control"
+        [(ngModel)]="model.admissionDateTime"
+        name="admissionDateTime"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="patientId">Izaberite pacijenta</label>
+      <select
+        id="patientId"
+        class="form-control"
+        [(ngModel)]="model.patientId"
+        name="patientId"
+        required
+      >
+        <option *ngFor="let patient of patients" [value]="patient.id">
+          {{ patient.name }} {{ patient.surname }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="doctorId">Nadležni doktor specijalist</label>
+      <select
+        id="doctorId"
+        class="form-control"
+        [(ngModel)]="model.doctorId"
+        name="doctorId"
+        required
+      >
+        <option *ngFor="let doctor of doctors" [value]="doctor.id">
+          {{ doctor.name }} {{ doctor.surname }} - {{ doctor.doctorCode }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="isEmergency">Hitni prijem</label>
+      <select
+        id="isEmergency"
+        class="form-control"
+        [(ngModel)]="model.isEmergency"
+        name="isEmergency"
+      >
+        <option [value]="true">Da</option>
+        <option [value]="false">Ne</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!admissionForm.form.valid">
+        Spremi
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="navigateToHome()">
+        Odustani
+      </button>
+    </div>
+  </form>
+</div>
