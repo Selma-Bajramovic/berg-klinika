@@ -1,1 +1,35 @@
-<p>doctors-list works!</p>
+<div class="container">
+    <div class="header">
+      <strong>Doktori</strong>
+    </div>
+  
+    <div class="filters">
+      <div>
+        <mat-slide-toggle (change)="toggleSpecialists($event.checked)">Samo specijalisti</mat-slide-toggle>
+      </div>
+  
+      <div class="btn-wrapper">
+        <button class="btn btn-primary btn-sm" [routerLink]="'/novidoktor'">Dodaj novog registrovanog doktora</button>
+      </div>
+    </div>
+  
+    <div class="admissions">
+      <div *ngFor="let doctor of doctors" class="admission-card">
+        <div class="admission-header">
+          <h5>{{ doctor.name }} {{ doctor.surname }}</h5>
+          <span>Specijalist: {{ doctor.isSpec ? 'Da' : 'Ne' }}</span>
+        </div>
+        <p>Šifra doktora: {{ doctor.doctorCode }}</p>
+        <p>Datum rođenja: {{ doctor.dateOfBirth | date: 'dd.MM.yyyy.' }}</p>
+        <p>JMBG: {{ doctor.jmbg }} Spol: {{ doctor.gender }}</p>
+        <p>Broj telefona: {{ doctor.phoneNumber }}</p>
+        <p>Adresa: {{ doctor.address }}</p>
+        <p>Profesija: {{ doctor.title }}</p>
+        <div class="actions">
+          <button class="btn btn-outline-primary" (click)="editDoctor(doctor.id)">Izmijeni podatke</button>
+          <button class="btn btn-outline-danger" (click)="confirmDelete(doctor.id)">Obriši doktora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

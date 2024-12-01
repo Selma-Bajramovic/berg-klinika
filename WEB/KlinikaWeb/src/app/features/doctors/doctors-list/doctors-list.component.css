@@ -1,0 +1,87 @@
+.container {
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+  color: #333;
+}
+
+.header {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-dropdown {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.filter-dropdown label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-dropdown .form-control {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #d1e7ff;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-wrapper .btn {
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-wrapper .btn:hover {
+  background-color: #0056b3;
+}
+
+.admissions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admission-card {
+  background-color: #e3f2fd;
+  border: 1px solid #d1e7ff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  border-radius: 5px;
+}
