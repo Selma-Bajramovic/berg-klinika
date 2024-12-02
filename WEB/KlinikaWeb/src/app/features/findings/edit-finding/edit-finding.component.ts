@@ -9,25 +9,24 @@ import { SuccessDialogComponent } from '../../../shared/succes-dialog/succes-dia
 @Component({
   selector: 'app-edit-finding',
   standalone: false,
-  
   templateUrl: './edit-finding.component.html',
   styleUrl: './edit-finding.component.css'
 })
 export class EditFindingComponent implements OnInit {
 
-    finding:Finding={
-      id:'',
-      admissionId:0,
-      description:'',
-      createdAt:'',
-      patientName:'',
-      doctorDetails:''
+    finding: Finding = {
+      id: '',
+      admissionId: 0,
+      description: '',
+      createdAt: '',
+      patientName: '',
+      doctorDetails: ''
     };
 
     constructor(
       private route: ActivatedRoute,
       private findingsService: FindingsService,
-      private router:Router,
+      private router: Router,
       private dialog: MatDialog
     ) {}
 
