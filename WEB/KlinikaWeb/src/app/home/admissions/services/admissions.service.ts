@@ -36,5 +36,10 @@ export class AdmissionsService {
     return this.http.delete<any>(`${environment.apiBaseUrl}/api/Admission/${id}`);
   }
 
+  getFilteredAdmissions(params: any): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiBaseUrl}/api/Admission`, { params });
+  }
+  
+
 }
 
