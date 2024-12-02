@@ -4,8 +4,8 @@ export interface DoctorModel{
     jmbg: string;
     dateOfBirth: Date;
     gender: string;
-    address: string;
-    phoneNumber: string;
+    address?: string;
+    phoneNumber?: string;
     title: string;
     isSpec:boolean;
 }
