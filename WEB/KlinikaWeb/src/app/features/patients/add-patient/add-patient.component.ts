@@ -36,7 +36,6 @@ export class AddPatientComponent {
                     this.router.navigate(['/pacijenti']);
                 },
                 error: (err) => {
-                    console.error('Greška prilikom dodavanja pacijenta:', err);
                     alert('Došlo je do greške prilikom dodavanja pacijenta. Pokušajte ponovo.');
                 },
             });
