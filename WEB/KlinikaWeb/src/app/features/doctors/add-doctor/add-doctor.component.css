@@ -82,3 +82,7 @@
     transform: scale(1.05);
   }
   
+  .required-field {
+    color: red;
+  }
+  

@@ -21,7 +21,7 @@ export class AddDoctorComponent {
     address: '',
     phoneNumber: '',
     title: '',
-    isSpec:false
+    isSpec: false,
   };
 
   constructor(
@@ -37,7 +37,6 @@ export class AddDoctorComponent {
           this.router.navigate(['/doktori']);
         },
         error: (err) => {
-          console.error('Greška prilikom dodavanja doktora:', err);
           alert('Došlo je do greške prilikom dodavanja doktora. Pokušajte ponovo.');
         },
       });
@@ -47,16 +46,15 @@ export class AddDoctorComponent {
   }
 
   private isFormValid(): boolean {
-    return !!this.model.name && !!this.model.surname && !!this.model.jmbg &&  !!this.model.gender &&  !!this.model.address 
-    && !!this.model.phoneNumber && !!this.model.title && !!this.model.dateOfBirth && this.model.isSpec !== null && this.model.isSpec !== undefined;
+    return !!this.model.name && !!this.model.surname && !!this.model.jmbg && !!this.model.gender && !!this.model.address 
+      && !!this.model.phoneNumber && !!this.model.title && !!this.model.dateOfBirth && this.model.isSpec !== null && this.model.isSpec !== undefined;
   }
-  
   
   openSuccessDialog(message: string): void {
     this.dialog.open(SuccessDialogComponent, {
-        data: { message },
+      data: { message },
     });
-}
+  }
   
   navigateToHome(): void {
     this.router.navigate(['/doktori']);
