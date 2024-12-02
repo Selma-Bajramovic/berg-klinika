@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-add-admission',
   standalone: false,
   templateUrl: './add-admission.component.html',
-  styleUrl: './add-admission.component.css'
+  styleUrl: './add-admission.component.css',
 })
 export class AddAdmissionComponent implements OnInit, OnDestroy {
   model: AdmissionModel = {
@@ -28,6 +28,8 @@ export class AddAdmissionComponent implements OnInit, OnDestroy {
   doctors: Doctor[] = [];
   private subscription: Subscription = new Subscription();
 
+  minDateTime: string = new Date().toISOString().slice(0, 16);
+
   constructor(
     private router: Router,
     private admissionService: AdmissionsService,
@@ -35,11 +37,16 @@ export class AddAdmissionComponent implements OnInit, OnDestroy {
     private doctorsService: DoctorsService,
     private dialog: MatDialog
   ) {}
-  
 
   ngOnInit(): void {
     this.getPatients();
     this.getDoctors();
+  }
+
+  isPastDate(dateTime: string): boolean {
+    const inputDate = new Date(dateTime);
+    const currentDate = new Date();
+    return inputDate < currentDate;
   }
 
   getPatients(): void {
@@ -48,9 +55,7 @@ export class AddAdmissionComponent implements OnInit, OnDestroy {
         next: (data: Patient[]) => {
           this.patients = data;
         },
-        error: (err) => {
-          console.error('Greška prilikom učitavanja pacijenata:', err);
-        }
+        error: (err) => {},
       })
     );
   }
@@ -61,35 +66,30 @@ export class AddAdmissionComponent implements OnInit, OnDestroy {
         next: (data: Doctor[]) => {
           this.doctors = data.filter((doctor) => doctor.isSpec);
         },
-        error: (err) => {
-          console.error('Greška prilikom učitavanja doktora:', err);
-        }
+        error: (err) => {},
       })
     );
   }
-  
 
   onSubmit(): void {
     if (this.model.admissionDateTime) {
-      this.model.admissionDateTime = new Date(this.model.admissionDateTime).toISOString();
+      this.model.admissionDateTime = new Date(
+        this.model.admissionDateTime
+      ).toISOString();
     }
-  
+
     if (typeof this.model.isEmergency !== 'boolean') {
       this.model.isEmergency = Boolean(this.model.isEmergency);
     }
-  
+
     if (!this.model.admissionDateTime || this.model.patientId <= 0 || this.model.doctorId <= 0) {
-      console.error('Missing required fields.');
       return;
     }
-  
+
     if (!this.patients.length || !this.doctors.length) {
-      console.error('Patients or doctors data not loaded.');
       return;
     }
-  
-    console.log('Data to be sent:', this.model);
-  
+
     this.subscription.add(
       this.admissionService.addAdmission(this.model).subscribe({
         next: () => {
@@ -103,9 +103,9 @@ export class AddAdmissionComponent implements OnInit, OnDestroy {
 
   openSuccessDialog(message: string): void {
     this.dialog.open(SuccessDialogComponent, {
-        data: { message },
+      data: { message },
     });
-}
+  }
 
   navigateToHome(): void {
     this.router.navigate(['/']);

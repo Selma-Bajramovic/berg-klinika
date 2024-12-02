@@ -10,7 +10,11 @@
         [(ngModel)]="model.admissionDateTime"
         name="admissionDateTime"
         required
+        [min]="minDateTime" 
       />
+      <span *ngIf="isPastDate(model.admissionDateTime)" class="error-message">
+        Datum i vrijeme moraju biti u budućnosti.
+      </span>
     </div>
 
     <div class="form-group">
@@ -57,9 +61,12 @@
     </div>
 
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary" [disabled]="!admissionForm.form.valid">
-        Spremi
-      </button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!admissionForm.form.valid || isPastDate(model.admissionDateTime)"
+        >Spremi</button
+      >
       <button type="button" class="btn btn-secondary" (click)="navigateToHome()">
         Odustani
       </button>
