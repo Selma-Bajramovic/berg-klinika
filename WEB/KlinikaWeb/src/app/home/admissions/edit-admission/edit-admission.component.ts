@@ -15,6 +15,7 @@ import { SuccessDialogComponent } from '../../../shared/succes-dialog/succes-dia
 })
 export class EditAdmissionComponent implements OnInit {
 
+  /*not in use in this version*/
 
   admission:Admission={
     id:0,
