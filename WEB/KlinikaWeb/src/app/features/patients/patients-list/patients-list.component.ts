@@ -28,13 +28,13 @@ export class PatientListComponent implements OnInit {
   loadPatients(): void {
     this.patientsService.getPatients().subscribe({
       next: (data) => (this.patients = data),
-      error: (err) => console.error('Greška prilikom učitavanja pacijenata:', err),
+      error: (err) => {},
     });
   }
 
   editPatient(id: string): void {
     this.patientsService.getPatientById(id.toString()).subscribe({
-      next:(patient)=>{
+      next: (patient) => {
         this.router.navigate(['/uredipacijenta', id], {
           state: { patient: patient },
         });
@@ -42,7 +42,6 @@ export class PatientListComponent implements OnInit {
       error: (err) => {},
     });
   }
-  
 
   confirmDelete(patientId: string): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -62,7 +61,7 @@ export class PatientListComponent implements OnInit {
         this.openSuccessDialog('Uspješno obrisan pacijent');
         this.loadPatients();
       },
-      error: (err) => console.error('Greška prilikom brisanja pacijenta:', err),
+      error: (err) => {},
     });
   }
 

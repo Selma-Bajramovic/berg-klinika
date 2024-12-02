@@ -9,7 +9,6 @@ import { SuccessDialogComponent } from '../../../shared/succes-dialog/succes-dia
 @Component({
   selector: 'app-findings-list',
   standalone: false,
-  
   templateUrl: './findings-list.component.html',
   styleUrl: './findings-list.component.css'
 })
@@ -31,9 +30,7 @@ export class FindingsListComponent implements OnInit {
       next: (data) => {
         this.findings = data;
       },
-      error: (err) => {
-        console.error('Error fetching findings:', err);
-      },
+      error: (err) => {},
     });
   }
 
@@ -55,7 +52,7 @@ export class FindingsListComponent implements OnInit {
         this.openSuccessDialog('Uspješno obrisan nalaz');
         this.loadFindings();
       },
-      error: (err) => console.error('Greška prilikom brisanja pacijenta:', err),
+      error: (err) => {},
     });
   }
 
