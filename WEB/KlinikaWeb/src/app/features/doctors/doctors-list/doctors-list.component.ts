@@ -14,7 +14,7 @@ import { SuccessDialogComponent } from '../../../shared/succes-dialog/succes-dia
 })
 export class DoctorsListComponent implements OnInit {
   doctors: Doctor[] = [];
-  allDoctors: Doctor[] = []; // Originalna lista doktora
+  allDoctors: Doctor[] = [];
 
   constructor(
     private router: Router,
@@ -29,12 +29,10 @@ export class DoctorsListComponent implements OnInit {
   loadDoctors(): void {
     this.doctorsService.getDoctors().subscribe({
       next: (data: Doctor[]) => {
-        this.allDoctors = data; // Čuvanje originalne liste
-        this.doctors = [...data]; // Početni prikaz
+        this.allDoctors = data;
+        this.doctors = [...data];
       },
-      error: (err) => {
-        console.error('Greška prilikom dobijanja doktora:', err);
-      },
+      error: (err) => {},
     });
   }
 
@@ -67,9 +65,7 @@ export class DoctorsListComponent implements OnInit {
         this.openSuccessDialog('Uspješno obrisan doktor');
         this.loadDoctors();
       },
-      error: (err) => {
-        console.error('Greška prilikom brisanja doktora:', err);
-      },
+      error: (err) => {},
     });
   }
 
