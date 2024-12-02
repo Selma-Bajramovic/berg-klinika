@@ -19,6 +19,13 @@ export class AdmissionsListComponent implements OnInit {
   admissions: any[] = [];
   allAdmissions: any[] = [];
 
+  filters = {
+    fromDate: '',
+    toDate: ''
+  };
+
+  filtersValid: boolean = true;
+
   constructor(
     private doctorsService: DoctorsService,
     private admissionsService: AdmissionsService,
@@ -39,12 +46,9 @@ export class AdmissionsListComponent implements OnInit {
       (data) => {
         this.doctors = data.filter((doctor: any) => doctor.isSpec);
       },
-      (error) => {
-        console.error('Error fetching doctors:', error);
-      }
+      (error) => {}
     );
   }
-  
 
   getAdmissions(): void {
     this.admissionsService.getAdmissions().subscribe(
@@ -52,23 +56,38 @@ export class AdmissionsListComponent implements OnInit {
         this.allAdmissions = data;
         this.admissions = [...data];
       },
-      (error) => {
-        console.error('Error fetching admissions:', error);
-      }
+      (error) => {}
     );
   }
 
-  editAdmission(admissionId: number): void {
-    this.admissionsService.getAdmissionById(admissionId.toString()).subscribe({
-      next: (admission) => {
-        this.router.navigate(['/urediprijem', admissionId], {
-          state: { admission: admission },
-        });
-      },
-      error: (err) => {
-        console.error('Greška prilikom preuzimanja prijema:', err);
-      },
+  validateDateRange(): void {
+    if (this.filters.fromDate && this.filters.toDate) {
+      this.filtersValid = new Date(this.filters.fromDate) <= new Date(this.filters.toDate);
+    } else {
+      this.filtersValid = true;
+    }
+  }
+
+  applyFilters(): void {
+    const filteredAdmissions = this.allAdmissions.filter(admission => {
+      const admissionDate = new Date(admission.admissionDateTime);
+      const isInRange = (!this.filters.fromDate || admissionDate >= new Date(this.filters.fromDate)) &&
+                        (!this.filters.toDate || admissionDate <= new Date(this.filters.toDate));
+      return isInRange;
     });
+
+    this.admissions = filteredAdmissions;
+  }
+
+  toggleEmergencyAdmissions(showOnlyEmergency: boolean): void {
+    const filteredAdmissions = this.allAdmissions.filter(admission => {
+      const admissionDate = new Date(admission.admissionDateTime);
+      const isInRange = (!this.filters.fromDate || admissionDate >= new Date(this.filters.fromDate)) &&
+                        (!this.filters.toDate || admissionDate <= new Date(this.filters.toDate));
+      return isInRange && (showOnlyEmergency ? admission.isEmergency : true);
+    });
+
+    this.admissions = filteredAdmissions;
   }
 
   writeAdmission(admissionId: number): void {
@@ -78,9 +97,7 @@ export class AdmissionsListComponent implements OnInit {
           state: { admission: admission },
         });
       },
-      error: (err) => {
-        console.error('Greška prilikom preuzimanja prijema:', err);
-      },
+      error: (err) => {},
     });
   }
 
@@ -102,26 +119,13 @@ export class AdmissionsListComponent implements OnInit {
         this.openSuccessDialog('Uspješno otkazan prijem');
         this.getAdmissions();
       },
-      error: (err) => {
-        console.error('Error deleting admission:', err);
-      },
+      error: (err) => {},
     });
   }
 
-  toggleEmergencyAdmissions(showOnlyEmergency: boolean): void {
-    if (showOnlyEmergency) {
-      this.admissions = this.allAdmissions.filter(admission => admission.isEmergency);
-    } else {
-      this.admissions = [...this.allAdmissions];
-    }
-  }
-
-  
   openSuccessDialog(message: string): void {
     this.dialog.open(SuccessDialogComponent, {
       data: { message },
     });
   }
-
-  
 }
